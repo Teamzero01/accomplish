@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 
-const APP_DATA_NAME = 'Accomplish';
+const APP_DATA_NAME = 'AstroX';
 app.setPath('userData', path.join(app.getPath('appData'), APP_DATA_NAME));
 
 if (process.platform === 'win32') {
@@ -58,7 +58,7 @@ if (process.env.CLEAN_START === '1') {
   logMain('INFO', '[Clean Mode] All singletons reset');
 }
 
-app.setName('Accomplish');
+app.setName('AstroX');
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const envPath = app.isPackaged

@@ -17,6 +17,7 @@ const AUTO_LABELS: Record<string, string> = {
   'zh-CN': '自动（跟随系统）',
   ru: 'Авто (Система)',
   fr: 'Auto (Système)',
+  de: 'Auto (System)',
 };
 const AUTO_FALLBACK = 'Auto (System)';
 
@@ -33,6 +34,7 @@ const LANGUAGE_OPTIONS = [
   { value: 'zh-CN' as const, label: '简体中文' },
   { value: 'ru' as const, label: 'Русский' },
   { value: 'fr' as const, label: 'Français' },
+  { value: 'de' as const, label: 'Deutsch' },
 ];
 
 type LanguageValue = (typeof LANGUAGE_OPTIONS)[number]['value'];

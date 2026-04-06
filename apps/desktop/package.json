@@ -3,7 +3,7 @@
   "version": "0.3.8",
   "private": true,
   "type": "module",
-  "description": "Accomplish Desktop App",
+  "description": "AstroX Desktop App",
   "main": "dist-electron/main/index.js",
   "scripts": {
     "postinstall": "node scripts/postinstall.cjs",
@@ -99,8 +99,8 @@
     "npmRebuild": false,
     "compression": "normal",
     "appId": "ai.accomplish.desktop",
-    "productName": "Accomplish (formerly Openwork)",
-    "artifactName": "Accomplish-${version}-${os}-${arch}.${ext}",
+    "productName": "AstroX (formerly Openwork)",
+    "artifactName": "AstroX-${version}-${os}-${arch}.${ext}",
     "directories": {
       "output": "release",
       "buildResources": "resources"
@@ -237,7 +237,8 @@
       "target": [
         "nsis"
       ],
-      "icon": "resources/icon.ico"
+      "icon": "resources/icon.ico",
+      "shortcutName": "AstroX"
     },
     "nsis": {
       "oneClick": true,
@@ -245,7 +246,7 @@
       "allowToChangeInstallationDirectory": false,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Accomplish",
+      "shortcutName": "AstroX",
       "runAfterFinish": true,
       "installerIcon": "resources/icon.ico",
       "uninstallerIcon": "resources/icon.ico",
