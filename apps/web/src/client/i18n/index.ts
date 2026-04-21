@@ -48,8 +48,17 @@ import frHistory from '@locales/fr/history.json';
 import frErrors from '@locales/fr/errors.json';
 import frSidebar from '@locales/fr/sidebar.json';
 
+// Static German locale imports
+import deCommon from '@locales/de/common.json';
+import deHome from '@locales/de/home.json';
+import deSettings from '@locales/de/settings.json';
+import deExecution from '@locales/de/execution.json';
+import deHistory from '@locales/de/history.json';
+import deErrors from '@locales/de/errors.json';
+import deSidebar from '@locales/de/sidebar.json';
+
 // Supported languages and namespaces
-export const SUPPORTED_LANGUAGES = ['en', 'zh-CN', 'ru', 'fr'] as const;
+export const SUPPORTED_LANGUAGES = ['en', 'zh-CN', 'ru', 'fr', 'de'] as const;
 export const NAMESPACES = [
   'common',
   'home',
@@ -85,7 +94,13 @@ function resolveStoredLanguage(): SupportedLanguage {
     return 'en';
   }
   const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-  if (stored === 'en' || stored === 'zh-CN' || stored === 'ru' || stored === 'fr') {
+  if (
+    stored === 'en' ||
+    stored === 'zh-CN' ||
+    stored === 'ru' ||
+    stored === 'fr' ||
+    stored === 'de'
+  ) {
     return stored;
   }
   // 'auto' or missing — detect from browser
@@ -98,6 +113,9 @@ function resolveStoredLanguage(): SupportedLanguage {
   }
   if (nav.startsWith('fr')) {
     return 'fr';
+  }
+  if (nav.startsWith('de')) {
+    return 'de';
   }
   return 'en';
 }
@@ -157,6 +175,15 @@ export async function initI18n(): Promise<void> {
             errors: frErrors as Record<string, unknown>,
             sidebar: frSidebar as Record<string, unknown>,
           },
+          de: {
+            common: deCommon as Record<string, unknown>,
+            home: deHome as Record<string, unknown>,
+            settings: deSettings as Record<string, unknown>,
+            execution: deExecution as Record<string, unknown>,
+            history: deHistory as Record<string, unknown>,
+            errors: deErrors as Record<string, unknown>,
+            sidebar: deSidebar as Record<string, unknown>,
+          },
         },
         lng: initialLanguage,
         fallbackLng: 'en',
@@ -194,7 +221,7 @@ export async function initI18n(): Promise<void> {
  * Change language and persist to localStorage
  */
 export async function changeLanguage(
-  language: 'en' | 'zh-CN' | 'ru' | 'fr' | 'auto',
+  language: 'en' | 'zh-CN' | 'ru' | 'fr' | 'de' | 'auto',
 ): Promise<void> {
   const resolvedLanguage = language === 'auto' ? resolveAutoLanguage() : language;
   localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
@@ -205,7 +232,7 @@ export async function changeLanguage(
 /**
  * Get the current language preference from localStorage
  */
-export function getLanguagePreference(): 'en' | 'zh-CN' | 'ru' | 'fr' | 'auto' {
+export function getLanguagePreference(): 'en' | 'zh-CN' | 'ru' | 'fr' | 'de' | 'auto' {
   if (typeof localStorage === 'undefined') {
     return 'auto';
   }
@@ -215,6 +242,7 @@ export function getLanguagePreference(): 'en' | 'zh-CN' | 'ru' | 'fr' | 'auto' {
     stored === 'zh-CN' ||
     stored === 'ru' ||
     stored === 'fr' ||
+    stored === 'de' ||
     stored === 'auto'
   ) {
     return stored;
@@ -232,6 +260,9 @@ function resolveAutoLanguage(): SupportedLanguage {
   }
   if (nav.startsWith('fr')) {
     return 'fr';
+  }
+  if (nav.startsWith('de')) {
+    return 'de';
   }
   return 'en';
 }

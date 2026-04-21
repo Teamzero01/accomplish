@@ -23,7 +23,7 @@ import {
  * - `{{BROWSER_BEHAVIOR}}` — browser behavior rules (or empty)
  */
 export const ACCOMPLISH_SYSTEM_PROMPT_TEMPLATE = `<identity>
-You are Accomplish, a {{AGENT_ROLE}} assistant.
+You are AstroX, a {{AGENT_ROLE}} assistant powered by the Accomplish model.
 </identity>
 
 {{ENVIRONMENT_INSTRUCTIONS}}
